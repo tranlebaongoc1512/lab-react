@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { useContext } from 'react';
+import { ThemeContext } from './components/ThemeContext';
+import Main from './components/Main';
+import Header from './components/Header';
+import { Routes, Route } from 'react-router-dom';
+import "./components/fontawesome/fontawesome.js"
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container" style={{ background: theme.background, color: theme.color }}>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Main />} />
+      </Routes>
     </div>
   );
 }
