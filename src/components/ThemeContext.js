@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 
 const themes = {
     dark: {
-        background: 'linear-gradient(to right, #18232c, #18232c 80%)',
+        background: '#18232c',
         navBackground: 'linear-gradient(to bottom, #18232c, transparent)',
-        searchBarBackground: 'rgba(62, 84, 102, 0.9)',
+        inputBackground: 'rgba(62, 84, 102, 0.9)',
+        cardBackground: '#222e3d',
         color: 'white',
     },
     light: {
-        background: 'white',
+        background: '#ebeff4',
         navBackground: 'linear-gradient(to bottom, white, transparent)',
-        searchBarBackground: 'rgba(177, 194, 208, 0.9)',
+        inputBackground: 'rgba(177, 194, 208, 0.5)',
+        cardBackground: 'white',
         color: 'black',
     }
 };

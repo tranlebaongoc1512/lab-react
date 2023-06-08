@@ -6,7 +6,8 @@ export const Films = [
         year: "2022",
         nation: "United States",
         banner: "assets/images/minions-banner.jpg",
-        info: "The untold story of one twelve-year-old's dream to become the world's greatest supervillain."
+        info: "The untold story of one twelve-year-old's dream to become the world's greatest supervillain.",
+        trailer: "6DxjJzmYsXo",
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ export const Films = [
         year: "2020",
         nation: "Japan",
         banner: "assets/images/doraemon-banner.jpg",
-        info: "Nobita accidentally found a fossil dinosaur egg mixed with rocks in the dinosaur fossil exhibition site that he had visited before. He returned it to its original state with the \"Time blanket\". After hatching, the egg hatches a new species of dinosaur that is not named in the Cosmic Encyclopedia and names them Kyu and Myu Although they want to take care of them secretly, there are dinosaurs in the city still discovered by residents; Nobita and his friends were forced to bring them back to the Cretaceous period 66 million years ago the dinosaurs time. Just the time of Dinosaurs Extinction.",
+        info: "Nobita, who visited the dinosaur exhibition with Suneo and his friends, finds fossils of dinosaur eggs in a fossil excavation experience. The twins of the feathered dinosaur were born with \"time wrapping cloth\" and covered",
+        trailer: "7ZbhWq2PybY",
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/kung-fu-panda-banner.jpg",
         info: "To everyone's surprise, including his own, Po, an overweight, clumsy panda, is chosen as protector of the Valley of Peace. His suitability will soon be tested as the valley's arch-enemy is on his way.",
+        trailer: "PXi3Mv6KMzY",
     },
     {
         id: 4,
@@ -34,6 +37,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/hotel-transylvania-banner.jpg",
         info: "After one experiment, Johnny turns into a monster and everyone else becomes human. Now it has to be seen whether they will be able to reverse this experiment.",
+        trailer: "7AP86CYeR30",
     },
     {
         id: 5,
@@ -43,6 +47,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/coco-banner.jpg",
         info: "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
+        trailer: "Ga6RYejo6Hk",
     },
     {
         id: 6,
@@ -52,6 +57,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/frozen-banner.jpg",
         info: "Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa's powers in order to save their kingdom.",
+        trailer: "Zi4LMpSDccc",
     },
     {
         id: 7,
@@ -61,6 +67,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/how-to-train-your-dragon-banner.jpg",
         info: "When Hiccup discovers Toothless isn't the only Night Fury, he must seek \"The Hidden World\", a secret Dragon Utopia before a hired tyrant named Grimmel finds it first.",
+        trailer: "SkcucKDrbOI",
     },
     {
         id: 8,
@@ -70,6 +77,7 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/the-boss-baby-banner.jpg",
         info: "The Templeton brothers have become adults and drifted away from each other, but a new boss baby with a cutting-edge approach is about to bring them together again - and inspire a new family business.",
+        trailer: "QPzy8Ckza08",
     },
     {
         id: 9,
@@ -79,5 +87,6 @@ export const Films = [
         nation: "United States",
         banner: "assets/images/soul-banner.jpg",
         info: "After landing the gig of a lifetime, a New York jazz pianist suddenly finds himself trapped in a strange land between Earth and the afterlife.",
+        trailer: "xOsLIiBStEs",
     },
 ]
