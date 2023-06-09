@@ -87,16 +87,18 @@ export default function Header() {
                             </MenuItem>
                         ))}
                     </Menu>
-                    <IconButton
-                        sx={{ position: 'absolute', right: 0, paddingRight: '20px' }}
-                        size="medium"
-                        aria-controls="menu-userbar"
-                        aria-haspopup="true"
-                        onClick={handleOpenUserMenu}
-                        color="inherit"
-                    >
-                        <FontAwesomeIcon icon={faRightToBracket} />
-                    </IconButton>
+                    <div style={{ position: 'absolute', right: 0, paddingRight: '20px' }}>
+                    <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
+                        <IconButton
+                            size="medium"
+                            aria-controls="menu-userbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenUserMenu}
+                            color="inherit"
+                        >
+                            <FontAwesomeIcon icon={faRightToBracket} />
+                        </IconButton>
+                    </div>
                     <Menu
                         id="menu-userbar"
                         anchorEl={anchorElUser}

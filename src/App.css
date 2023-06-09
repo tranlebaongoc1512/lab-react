@@ -199,7 +199,7 @@
 }
 .detail-trailer {
   width: 100%;
-  height: 70vh;
+  height: 30vh;
 }
 .detail-youtube {
   height: 100%;
@@ -241,6 +241,9 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
+  .detail-trailer {
+    height: 50vh;
+  }
   .slider {
     height: 40vh;
   }
@@ -257,6 +260,9 @@ footer {
   }
 }
 @media screen and (min-width: 1350px) {
+  .detail-trailer {
+    height: 70vh;
+  }
   .detail {
     padding: 30px 200px 0 30px;
     width: 45vw !important;

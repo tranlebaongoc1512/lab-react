@@ -8,6 +8,7 @@ export const Films = [
         banner: "assets/images/minions-banner.jpg",
         info: "The untold story of one twelve-year-old's dream to become the world's greatest supervillain.",
         trailer: "6DxjJzmYsXo",
+        rating: 6.5,
     },
     {
         id: 2,
@@ -18,6 +19,7 @@ export const Films = [
         banner: "assets/images/doraemon-banner.jpg",
         info: "Nobita, who visited the dinosaur exhibition with Suneo and his friends, finds fossils of dinosaur eggs in a fossil excavation experience. The twins of the feathered dinosaur were born with \"time wrapping cloth\" and covered",
         trailer: "7ZbhWq2PybY",
+        rating: 7.1,
     },
     {
         id: 3,
@@ -28,6 +30,7 @@ export const Films = [
         banner: "assets/images/kung-fu-panda-banner.jpg",
         info: "To everyone's surprise, including his own, Po, an overweight, clumsy panda, is chosen as protector of the Valley of Peace. His suitability will soon be tested as the valley's arch-enemy is on his way.",
         trailer: "PXi3Mv6KMzY",
+        rating: 7.8,
     },
     {
         id: 4,
@@ -38,6 +41,7 @@ export const Films = [
         banner: "assets/images/hotel-transylvania-banner.jpg",
         info: "After one experiment, Johnny turns into a monster and everyone else becomes human. Now it has to be seen whether they will be able to reverse this experiment.",
         trailer: "7AP86CYeR30",
+        rating: 6,
     },
     {
         id: 5,
@@ -48,6 +52,7 @@ export const Films = [
         banner: "assets/images/coco-banner.jpg",
         info: "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
         trailer: "Ga6RYejo6Hk",
+        rating: 8.4,
     },
     {
         id: 6,
@@ -58,6 +63,7 @@ export const Films = [
         banner: "assets/images/frozen-banner.jpg",
         info: "Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa's powers in order to save their kingdom.",
         trailer: "Zi4LMpSDccc",
+        rating: 6.8,
     },
     {
         id: 7,
@@ -68,6 +74,7 @@ export const Films = [
         banner: "assets/images/how-to-train-your-dragon-banner.jpg",
         info: "When Hiccup discovers Toothless isn't the only Night Fury, he must seek \"The Hidden World\", a secret Dragon Utopia before a hired tyrant named Grimmel finds it first.",
         trailer: "SkcucKDrbOI",
+        rating: 7.4,
     },
     {
         id: 8,
@@ -78,6 +85,7 @@ export const Films = [
         banner: "assets/images/the-boss-baby-banner.jpg",
         info: "The Templeton brothers have become adults and drifted away from each other, but a new boss baby with a cutting-edge approach is about to bring them together again - and inspire a new family business.",
         trailer: "QPzy8Ckza08",
+        rating: 5.9,
     },
     {
         id: 9,
@@ -88,5 +96,6 @@ export const Films = [
         banner: "assets/images/soul-banner.jpg",
         info: "After landing the gig of a lifetime, a New York jazz pianist suddenly finds himself trapped in a strange land between Earth and the afterlife.",
         trailer: "xOsLIiBStEs",
+        rating: 8,
     },
 ]

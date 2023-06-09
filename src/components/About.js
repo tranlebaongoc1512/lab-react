@@ -32,7 +32,8 @@ export default function About() {
                     </Typography>
                 </TabPanel>
                 <TabPanel value="2">
-                    <Typography variant="body1" paragraph>Our primary objective is to serve as a comprehensive resource for all things related to films. We aim to offer a platform that caters to both casual movie enthusiasts and serious cinephiles alike. Whether you are looking for recommendations, in-depth film analysis, or simply want to stay up-to-date with the latest movie news, we've got you covered.
+                    <Typography variant="body1" paragraph>
+                        Our primary objective is to serve as a comprehensive resource for all things related to films. We aim to offer a platform that caters to both casual movie enthusiasts and serious cinephiles alike. Whether you are looking for recommendations, in-depth film analysis, or simply want to stay up-to-date with the latest movie news, we've got you covered.
                     </Typography>
                 </TabPanel>
                 <TabPanel value="3">

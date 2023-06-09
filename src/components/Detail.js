@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Films } from '../shared/ListOfFilms'
 import YouTube from 'react-youtube';
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Rating } from '@mui/material'
 
 export default function Detail() {
     const filmId = useParams();
@@ -32,6 +32,8 @@ export default function Detail() {
                         <Typography variant="h5" gutterBottom>{film.title}</Typography>
                         <p>Year: {film.year}</p>
                         <p>Nation: {film.nation}</p>
+                        <p>iMDb Rating:</p>
+                        <p><Rating name="read-only" precision={0.1} value={film.rating/2} readOnly /> {film.rating}/10</p>
                     </Grid>
                     <Grid item xs={12}>
                         <p className='detail-info'>{film.info}</p>
