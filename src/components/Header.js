@@ -52,7 +52,7 @@ export default function Header() {
     return (
         <AppBar position="sticky" sx={{ background: theme.navBackground, color: theme.color }}>
             <Toolbar disableGutters>
-                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
                     <IconButton
                         sx={{ paddingLeft: '20px' }}
                         size="medium"
@@ -78,7 +78,7 @@ export default function Header() {
                         open={Boolean(anchorElNav)}
                         onClose={handleCloseNavMenu}
                         sx={{
-                            display: { xs: 'block', md: 'none' },
+                            display: { xs: 'block', sm: 'none' },
                         }}
                     >
                         {pages.map((page) => (
@@ -114,7 +114,7 @@ export default function Header() {
                         open={Boolean(anchorElUser)}
                         onClose={handleCloseUserMenu}
                         sx={{
-                            display: { xs: 'block', md: 'none' },
+                            display: { xs: 'block', sm: 'none' },
                         }}
                     >
                         {settings.map((setting) => (
@@ -124,12 +124,12 @@ export default function Header() {
                         ))}
                     </Menu>
                 </Box>
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, paddingLeft: '30px' }}>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, paddingLeft: '30px' }}>
                     {pages.map((page) => (
                         <Link key={page.id} onClick={handleCloseNavMenu} style={{ padding: '10px' }} className={location.pathname === page.path ? "active" : ""} to={page.path}>{page.name}</Link>
                     ))}
                 </Box>
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, paddingRight: '30px', position: 'absolute', right: 0 }}>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, paddingRight: '30px', position: 'absolute', right: 0 }}>
                     {settings.map((setting) => (
                         <Link key={setting.id} onClick={handleCloseUserMenu} style={{ padding: '10px' }} className={location.pathname === setting.path ? "active" : ""} to={setting.path}>{setting.name}</Link>
                     ))}

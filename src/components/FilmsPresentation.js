@@ -24,17 +24,18 @@ export default function FilmsPresentation({ films }) {
             <Grid container spacing={2}>
                 {currentFilms.map(film => {
                     return (
-                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id}>
-                            <Card sx={{ background: theme.cardBackground, color: 'inherit', width: '200px', margin: '0px auto 10px auto' }}>
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id} sx={{padding: '10px'}}>
+                            <Card sx={{ background: theme.cardBackground, color: 'inherit' }}>
                                 <CardActionArea onClick={() => navigate(`detail/${film.id}`)}>
                                     <CardMedia
+                                        className="card-media"
                                         component="img"
-                                        height="280"
                                         image={film.image}
                                         alt={film.title}
+                                        sx={{ height: '500px' }}
                                     />
                                     <CardContent>
-                                        <Typography variant='h5' sx={{ minHeight: '80px', fontSize: '18px' }}>
+                                        <Typography variant='h5' sx={{ fontSize: '18px', height: '70px' }}>
                                             {film.title}
                                         </Typography>
                                     </CardContent>

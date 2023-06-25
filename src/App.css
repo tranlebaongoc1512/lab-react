@@ -236,7 +236,7 @@ footer {
   position: absolute;
   bottom: 0;
 }
-.pagination ul li button{
+.pagination ul li button {
   color: inherit;
 }
 
@@ -250,6 +250,7 @@ footer {
   .slider img {
     height: 40vh;
   }
+
 }
 @media screen and (min-width: 992px) {
   .slider {
@@ -260,6 +261,9 @@ footer {
   }
 }
 @media screen and (min-width: 1350px) {
+  .card-media {
+    height: 380px !important;
+  }
   .detail-trailer {
     height: 70vh;
   }
@@ -272,13 +276,13 @@ footer {
     color: white;
     text-align: left;
     background-image: linear-gradient(
-    to right,
-    black,
-    black,
-    black,
-    black,
-    transparent
-    )
+      to right,
+      black,
+      black,
+      black,
+      black,
+      transparent
+    );
   }
   .detail-youtube {
     width: 70vw;
