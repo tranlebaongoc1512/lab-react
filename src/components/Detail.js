@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import YouTube from 'react-youtube';
 import { Grid, Typography, Rating, Button } from '@mui/material'
 import { deleteFilm, getFilm } from '../api/films';
+import Swal from 'sweetalert2'
 
 export default function Detail() {
     const navigate = useNavigate();
@@ -19,9 +20,26 @@ export default function Detail() {
     //     // eslint-disable-next-line
     //     return obj.id == filmId.id;
     // });
-    const handleDelete = async () => {
-        await deleteFilm(filmId.id);
-        navigate('/');
+    const handleDelete = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await deleteFilm(filmId.id);
+                Swal.fire(
+                    'Deleted!',
+                    'Film has been deleted.',
+                    'success'
+                );
+                navigate('/');
+            }
+        })
     }
     const opts = {
         height: '100%',
@@ -39,7 +57,7 @@ export default function Detail() {
             <div className='detail'>
                 <Grid container>
                     <Grid item xs={12} xl={6}>
-                        <img src={`../${film.image}`} alt={film.title} className='detail-img' />
+                        <img src={film.image} alt={film.title} className='detail-img' />
                     </Grid>
                     <Grid item xs={12} xl={6} sx={{ paddingLeft: '10px' }}>
                         <Typography variant="h5" gutterBottom>{film.title}</Typography>

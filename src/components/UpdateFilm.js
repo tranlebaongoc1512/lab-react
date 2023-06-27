@@ -5,8 +5,11 @@ import { ThemeContext } from './ThemeContext';
 import * as Yup from 'yup';
 import { getFilm, updateFilm } from '../api/films';
 import { useNavigate, useParams } from 'react-router-dom'
+import useDocumentTitle from './hooks/useDocumentTitle';
+import Swal from 'sweetalert2';
 
 export default function UpdateFilm() {
+    useDocumentTitle("Update Film");
     const filmId = useParams();
     const [film, setFilm] = useState({});
     useEffect(() => {
@@ -29,15 +32,29 @@ export default function UpdateFilm() {
             trailer: "",
             rating: 0,
         },
-        onSubmit: async values => {
-            let trailer = "";
-            if (values.trailer.includes("https://youtu.be/")) {
-                trailer = values.trailer.split("/").pop();
-            } else if (values.trailer.includes("youtube.com/watch?v=")) {
-                trailer = values.trailer.split("=").pop();
-            }
-            await updateFilm(filmId.id, { image: values.image, title: values.title, year: values.year, nation: values.nation, banner: values.banner, info: values.info, trailer: trailer, rating: values.rating });
-            navigate(`/detail/${filmId.id}`);
+        onSubmit: values => {
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+            }).then(async (result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    let trailer = values.trailer;
+                    if (values.trailer.includes("youtu.be/")) {
+                        trailer = values.trailer.split("/").pop();
+                    } else if (values.trailer.includes("youtube.com/watch?v=")) {
+                        trailer = values.trailer.split("=").pop();
+                    }
+                    await updateFilm(filmId.id, { image: values.image, title: values.title, year: values.year, nation: values.nation, banner: values.banner, info: values.info, trailer: trailer, rating: values.rating });
+                    navigate(`/detail/${filmId.id}`);
+                    Swal.fire('Saved!', '', 'success');
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info');
+                }
+            })
         },
         validationSchema: Yup.object({
             image: Yup.string().required("Required"),

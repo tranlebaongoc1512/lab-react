@@ -5,6 +5,7 @@ import { ThemeContext } from './ThemeContext';
 import * as Yup from 'yup';
 import { addFilm } from '../api/films';
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 export default function AddFilm() {
   const navigate = useNavigate();
@@ -22,12 +23,18 @@ export default function AddFilm() {
     },
     onSubmit: async values => {
       let trailer = "";
-      if (values.trailer.includes("https://youtu.be/")) {
+      if (values.trailer.includes("youtu.be/")) {
         trailer = values.trailer.split("/").pop();
       } else if (values.trailer.includes("youtube.com/watch?v=")) {
         trailer = values.trailer.split("=").pop();
       }
       await addFilm({ image: values.image, title: values.title, year: values.year, nation: values.nation, banner: values.banner, info: values.info, trailer: trailer, rating: values.rating });
+      Swal.fire({
+        icon: 'success',
+        title: 'Film add successfully',
+        showConfirmButton: false,
+        timer: 1500
+      });
       navigate('/');
     },
     validationSchema: Yup.object({
