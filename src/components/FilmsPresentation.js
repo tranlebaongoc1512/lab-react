@@ -19,13 +19,13 @@ export default function FilmsPresentation({ films }) {
     const currentFilms = films.slice(startIndex, endIndex);
     const totalPages = Math.ceil(films.length / itemsPerPage);
     return (
-        <Container maxWidth='xl' sx={{ marginTop: '30px' }}>
+        <Container maxWidth='xl' className='component-container'>
             <Typography variant="h4" gutterBottom>Trendy Movie</Typography>
             <Grid container spacing={2}>
                 {currentFilms.map(film => {
                     return (
-                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id} sx={{padding: '10px'}}>
-                            <Card sx={{ background: theme.cardBackground, color: 'inherit' }}>
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id} sx={{textAlign: 'center'}}>
+                            <Card sx={{ background: theme.cardBackground, color: 'inherit'}}>
                                 <CardActionArea onClick={() => navigate(`detail/${film.id}`)}>
                                     <CardMedia
                                         className="card-media"
@@ -35,7 +35,7 @@ export default function FilmsPresentation({ films }) {
                                         sx={{ height: '500px' }}
                                     />
                                     <CardContent>
-                                        <Typography variant='h5' sx={{ fontSize: '18px', height: '70px' }}>
+                                        <Typography variant='h5' sx={{ fontSize: '18px', height: '70px', textAlign:'left' }}>
                                             {film.title}
                                         </Typography>
                                     </CardContent>
@@ -45,7 +45,7 @@ export default function FilmsPresentation({ films }) {
                     )
                 })}
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Pagination className='pagination' variant='outlined' sx={{ marginBottom: "20px" }} count={totalPages} page={currentPage} onChange={handlePageChange} />
+                    <Pagination className='pagination' variant='outlined' count={totalPages} page={currentPage} onChange={handlePageChange} />
                 </Grid>
             </Grid>
         </Container>

@@ -6,8 +6,11 @@
 .container {
   position: relative;
   min-height: calc(100vh - 60px);
-  color: inherit;
   padding-bottom: 60px;
+}
+.component-container {
+  margin-top: 30px;
+  padding-bottom: 40px;
 }
 /* .header {
   z-index: 1;
@@ -262,7 +265,7 @@ footer {
 }
 @media screen and (min-width: 1350px) {
   .card-media {
-    height: 380px !important;
+    height: 360px !important;
   }
   .detail-trailer {
     height: 70vh;

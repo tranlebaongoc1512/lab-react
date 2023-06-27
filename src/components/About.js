@@ -12,7 +12,7 @@ export default function About() {
         setValue(newValue);
     };
     return (
-        <Container maxWidth="md" sx={{ marginTop: '30px' }}>
+        <Container maxWidth="md" className='component-container'>
             <Typography variant="h4" gutterBottom>About Us</Typography>
             <Typography variant="body1" paragraph>
                 Welcome to our film website! We are passionate about movies and are dedicated to providing you with the latest

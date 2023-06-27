@@ -10,6 +10,8 @@ import Contact from './components/Contact';
 import { Routes, Route } from 'react-router-dom';
 import "./components/fontawesome/fontawesome.js"
 import Footer from './components/Footer';
+import AddFilm from './components/AddFilm';
+import UpdateFilm from './components/UpdateFilm';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -22,6 +24,8 @@ function App() {
         <Route path='/news' element={<News />} />
         <Route path='/about-us' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/add-film' element={<AddFilm />} />
+        <Route path='/update-film/:id' element={<UpdateFilm />} />
       </Routes>
       <Footer />
     </div>

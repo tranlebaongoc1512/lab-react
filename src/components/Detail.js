@@ -1,15 +1,28 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { Films } from '../shared/ListOfFilms'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import YouTube from 'react-youtube';
-import { Grid, Typography, Rating } from '@mui/material'
+import { Grid, Typography, Rating, Button } from '@mui/material'
+import { deleteFilm, getFilm } from '../api/films';
 
 export default function Detail() {
+    const navigate = useNavigate();
     const filmId = useParams();
-    const film = Films.find(obj => {
-        // eslint-disable-next-line
-        return obj.id == filmId.id;
-    });
+    const [film, setFilm] = useState({});
+    useEffect(() => {
+        async function getFilmData() {
+            const film = await getFilm(filmId.id);
+            setFilm(film);
+        }
+        getFilmData();
+    }, [filmId])
+    // const film = Films.find(obj => {
+    //     // eslint-disable-next-line
+    //     return obj.id == filmId.id;
+    // });
+    const handleDelete = async () => {
+        await deleteFilm(filmId.id);
+        navigate('/');
+    }
     const opts = {
         height: '100%',
         width: '100%',
@@ -33,7 +46,19 @@ export default function Detail() {
                         <p>Year: {film.year}</p>
                         <p>Nation: {film.nation}</p>
                         <p>iMDb Rating:</p>
-                        <p><Rating name="read-only" precision={0.1} value={film.rating/2} readOnly /> {film.rating}/10</p>
+                        <p><Rating name="read-only" precision={0.1} value={film.rating / 2} readOnly /> {film.rating}/10</p>
+                        <Grid container>
+                            <Grid item xs={6} sx={{ padding: '0 5px' }}>
+                                <Button onClick={() => navigate(`/update-film/${film.id}`)} variant="contained" fullWidth sx={{ background: "#FFFFFF", color: "#000000" }} >
+                                    Edit
+                                </Button>
+                            </Grid>
+                            <Grid item xs={6} sx={{ padding: '0 5px' }}>
+                                <Button onClick={handleDelete} variant="contained" fullWidth sx={{ background: "#FFFFFF", color: "#000000" }}>
+                                    Delete
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid item xs={12}>
                         <p className='detail-info'>{film.info}</p>

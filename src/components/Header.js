@@ -11,6 +11,7 @@ const pages = [
     { id: 2, name: "News", path: "/news" },
     { id: 3, name: "About Us", path: "/about-us" },
     { id: 4, name: "Contact", path: "/contact" },
+    { id: 5, name: "Add Film", path: "/add-film" },
 ];
 const settings = [
     { id: 1, name: "Login", path: "/login" },
@@ -88,7 +89,7 @@ export default function Header() {
                         ))}
                     </Menu>
                     <div style={{ position: 'absolute', right: 0, paddingRight: '20px' }}>
-                    <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
+                        <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
                         <IconButton
                             size="medium"
                             aria-controls="menu-userbar"

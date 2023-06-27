@@ -26,7 +26,7 @@ export default function News() {
     ];
 
     return (
-        <Container maxWidth="lg" sx={{ marginTop: '30px' }}>
+        <Container maxWidth="lg" className='component-container'>
             <Typography variant="h4" gutterBottom>Latest News</Typography>
             <Grid container spacing={3}>
                 {newsArticles.map((article) => (
