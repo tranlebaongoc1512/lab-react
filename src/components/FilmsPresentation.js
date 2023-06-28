@@ -1,35 +1,30 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import { CardContent, CardMedia, Grid, Typography, Container, Pagination } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
-import { getFilmsByPage } from '../api/films';
 import LoadingButton from './LoadingButton';
 
 export default function FilmsPresentation({ films }) {
     const { theme } = useContext(ThemeContext);
     const itemsPerPage = 6;
-    const totalPages = Math.ceil(films.length / itemsPerPage);
-    const [filmsByPage, setFilmsByPage] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    useEffect(() => {
-        async function getLists() {
-            const list = await getFilmsByPage(currentPage, itemsPerPage);
-            setFilmsByPage(list);
-            console.log(list);
-        }
-        getLists();
-    }, [currentPage]);
-    // const [film, setFilm] = useState([]);
     const navigate = useNavigate();
+    const [currentPage, setCurrentPage] = useState(1);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, films.length);
+    const currentFilms = films.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(films.length / itemsPerPage);
+    useEffect(() => {
+        setCurrentPage([1]);
+    }, [films])
     return (
         <>
-            {filmsByPage.length !== 0 ? (
+            {films.length !== 0 ? (
                 <Container maxWidth='xl' className='component-container'>
                     <Typography variant="h4" gutterBottom>Trendy Movie</Typography>
                     <Grid container spacing={2}>
-                        {filmsByPage.map(film => {
+                        {currentFilms.map(film => {
                             return (
                                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id} sx={{ textAlign: 'center' }}>
                                     <Card sx={{ background: theme.cardBackground, color: 'inherit' }}>
@@ -60,31 +55,5 @@ export default function FilmsPresentation({ films }) {
                 <LoadingButton />
             )}
         </>
-        // <div className='card-container'>
-        //     {films.map(film => {
-        //         return (
-        //             <div className='collumn' key={film.id}>
-        //                 <div className='card'>
-        //                     <img className='card-img' src={film.image} alt={film.title} />
-        //                     <h3 className='card-title'>{film.title}</h3>
-        //                     <button className='card-btn' onClick={() => { setFilm(film) }}>
-        //                         <a href='#popup' id='openPopUp'>Detail</a>
-        //                     </button>
-        //                 </div>
-        //             </div>
-        //         )
-        //     }
-        //     )}
-        //     <div id='popup' className='overlay'>
-        //         <div className='popup'>
-        //             <img src={film.image} alt={film.title} />
-        //             <h2>{film.title}</h2>
-        //             <a className='close' href='#'>&times;</a>
-        //             <div className='content'>
-        //                 {film.info}
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
     )
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react'
-import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
 import useAuth from './hooks/useAuth';
 import { Container, Typography, TextField, Button } from '@mui/material';
@@ -14,7 +13,7 @@ export default function SignUp() {
             password: "",
         },
         onSubmit: async values => {
-            // login
+            // sign up
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Required").email("Invalid email"),
@@ -30,18 +29,11 @@ export default function SignUp() {
 
     });
     const { theme } = useContext(ThemeContext);
-    const { googleSignIn, user } = useAuth();
-    const navigate = useNavigate()
-    const handleGoogleSignIn = async () => {
-        try {
-            await googleSignIn();
-        } catch (error) {
-            console.log(error)
-        }
-    };
+    const { user } = useAuth();
+    const navigate = useNavigate();
     useEffect(() => {
         if (user != null) {
-            navigate('/')
+            navigate('/');
         }
     }, [user])
     return (
@@ -101,12 +93,6 @@ export default function SignUp() {
                 </div>
                 <Button type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color }}>Sign up</Button>
             </form>
-            <Typography variant="body1" paragraph sx={{ textAlign: 'center', padding: '30px' }}>
-                Or sign in with
-            </Typography>
-            <div>
-                <GoogleButton onClick={handleGoogleSignIn} style={{ marginLeft: 'auto', marginRight: 'auto' }} />
-            </div>
         </Container>
     )
 }

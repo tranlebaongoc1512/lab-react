@@ -3,18 +3,16 @@ export const getListOfFilms = async () => {
     const response = await api.get('/films');
     return response.data;
 };
-export const getFilmsByPage = async (page, numberPerPage) => {
+export const getSearchList = async (search) => {
     const response = await api.get('/films', {
         params: {
-            page: page,
-            limit: numberPerPage,
+            title: search,
         }
     });
     return response.data;
 };
 export const getFilm = async (id) => {
     const response = await api.get(`/films/${id}`);
-    console.log(response.data);
     return response.data;
 };
 export const addFilm = async (film) => {

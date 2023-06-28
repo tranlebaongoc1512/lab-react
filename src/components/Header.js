@@ -90,6 +90,10 @@ export default function Header() {
                         sx={{
                             display: { xs: 'block', sm: 'none' },
                         }}
+                        MenuListProps={{
+                            style: { background: theme.cardBackground, color: theme.color},
+                        }}
+                        className='menu-list'
                     >
                         {pages.map((page) => (
                             <MenuItem key={page.id} onClick={handleCloseNavMenu} className='menu-item'>
@@ -128,6 +132,10 @@ export default function Header() {
                                 sx={{
                                     display: { xs: 'block', sm: 'none' },
                                 }}
+                                MenuListProps={{
+                                    style: { background: theme.cardBackground, color: theme.color},
+                                }}
+                                className='menu-list'
                             >
                                 <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
                                     <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
@@ -168,6 +176,10 @@ export default function Header() {
                                 sx={{
                                     display: { xs: 'block', sm: 'none' },
                                 }}
+                                MenuListProps={{
+                                    style: { background: theme.cardBackground, color: theme.color},
+                                }}
+                                className='menu-list'
                             >
                                 {settings.map((setting) => (
                                     <MenuItem key={setting.id} onClick={handleCloseNavMenu} className='menu-item'>
@@ -209,6 +221,10 @@ export default function Header() {
                             }}
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
+                            MenuListProps={{
+                                style: { background: theme.cardBackground, color: theme.color},
+                            }}
+                            className='menu-list'
                         >
                             <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
                                 <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
@@ -230,23 +246,5 @@ export default function Header() {
         </AppBar>
 
     );
-    // const { theme, toggle } = useContext(ThemeContext);
-    // return (
-    //     <header className='header' style={{ background: theme.navBackground }}>
-    //         <nav className='navbar'>
-    //             <ul>
-    //                 <li><Link to={'/'} className='active'>Home</Link></li>
-    //                 <li><Link to={'/news'}>News</Link></li>
-    //                 <li><Link to={'/about-us'}>About Us</Link></li>
-    //                 <li><Link to={'/contact'}>Contact</Link></li>
-    //             </ul>
-    //         </nav>
-    //         <div className='header-right'>
-    //             <input className='search-bar' type='text' placeholder='Search' style={{ background: theme.inputBackground }} />
-    //             <Link to={'/sign-up'}>Sign up</Link>
-    //             <Link to={'/login'}>Login</Link>
-    //             <button className='switch-mode' onClick={toggle}><FontAwesomeIcon icon={faLightbulb} /></button>
-    //         </div>
-    //     </header>
-    // )
+
 }

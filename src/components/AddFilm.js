@@ -7,23 +7,50 @@ import { addFilm } from '../api/films';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import useDocumentTitle from './hooks/useDocumentTitle';
+import { useSelector, useDispatch } from 'react-redux';
+import { draftFilm } from '../selectors/selector';
+import { saveFilm, clearFilm } from '../actions/actions';
 
 export default function AddFilm() {
   useDocumentTitle("Add Film");
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
+  let initialFilm = {
+    image: "",
+    title: "",
+    year: currentYear,
+    nation: "",
+    banner: "",
+    info: "",
+    trailer: "",
+    rating: 0,
+  }
+  const filmDraft = useSelector(draftFilm);
+  if (filmDraft) {
+    initialFilm = filmDraft;
+  }
+  const dispatch = useDispatch();
+  const handleSaveFilm = () => {
+    const newFilm = formik.values;
+    dispatch(saveFilm(newFilm));
+    Swal.fire({
+      icon: 'success',
+      title: 'Save as draft successfully',
+      text: 'Draft data will be lost if you refresh the page',
+      showConfirmButton: true,
+      background: theme.cardBackground,
+      color: theme.color,
+    });
+  };
+
+  const handleClearFilm = () => {
+    dispatch(clearFilm());
+  };
+
   const formik = useFormik({
-    initialValues: {
-      image: "",
-      title: "",
-      year: currentYear,
-      nation: "",
-      banner: "",
-      info: "",
-      trailer: "",
-      rating: 0,
-    },
+    initialValues: initialFilm,
     onSubmit: async values => {
       let trailer = "";
       if (values.trailer.includes("youtu.be/")) {
@@ -32,6 +59,7 @@ export default function AddFilm() {
         trailer = values.trailer.split("=").pop();
       }
       await addFilm({ image: values.image, title: values.title, year: values.year, nation: values.nation, banner: values.banner, info: values.info, trailer: trailer, rating: values.rating });
+      handleClearFilm();
       Swal.fire({
         icon: 'success',
         title: 'Film add successfully',
@@ -56,7 +84,7 @@ export default function AddFilm() {
 
 
   return (
-    <Container maxWidth="md" className='component-container' sx={{paddingBottom:'60px'}}>
+    <Container maxWidth="md" className='component-container' sx={{ paddingBottom: '60px' }}>
       <Typography variant="h4" gutterBottom>Add Film</Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
@@ -193,6 +221,9 @@ export default function AddFilm() {
         </div>
         <Button className='btn' type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right' }}>
           Add
+        </Button>
+        <Button className='btn' onClick={handleSaveFilm} variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right', marginRight: '10px' }}>
+          Save as draft
         </Button>
       </form>
     </Container>

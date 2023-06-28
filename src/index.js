@@ -7,15 +7,20 @@ import { ThemeProvider } from './components/ThemeContext';
 import { BrowserRouter } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { AuthContextProvider } from './context/AuthContext';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <BrowserRouter>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <Provider store={store} >
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </Provider>
       </BrowserRouter>
     </AuthContextProvider>
   </React.StrictMode>

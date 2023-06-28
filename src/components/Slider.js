@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Slider({ films }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,6 +12,9 @@ export default function Slider({ films }) {
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
+  }
+  const previousSlide = () => {
+    setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
   }
 
   function autoSlide() {
@@ -35,6 +40,12 @@ export default function Slider({ films }) {
           {index === currentSlide && <img src={film.banner} alt={film.title} />}
         </div>
       ))}
+      <div className='slide-left'>
+        <FontAwesomeIcon icon={faAngleLeft} onClick={previousSlide} />
+      </div>
+      <div className='slide-right'>
+        <FontAwesomeIcon icon={faAngleRight} onClick={nextSlide} />
+      </div>
     </div>
   )
 }

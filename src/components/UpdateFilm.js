@@ -37,10 +37,9 @@ export default function UpdateFilm() {
         onSubmit: values => {
             Swal.fire({
                 title: 'Do you want to save the changes?',
-                showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: 'Save',
-                denyButtonText: `Don't save`,
+                cancelButtonColor: '#d33',
                 background: theme.cardBackground,
                 color: theme.color,
             }).then(async (result) => {
@@ -54,8 +53,6 @@ export default function UpdateFilm() {
                     await updateFilm(filmId.id, { image: values.image, title: values.title, year: values.year, nation: values.nation, banner: values.banner, info: values.info, trailer: trailer, rating: values.rating });
                     navigate(`/detail/${filmId.id}`);
                     Swal.fire('Saved!', '', 'success');
-                } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info');
                 }
             })
         },
