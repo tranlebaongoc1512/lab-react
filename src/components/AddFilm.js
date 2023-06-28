@@ -6,8 +6,11 @@ import * as Yup from 'yup';
 import { addFilm } from '../api/films';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
+import useDocumentTitle from './hooks/useDocumentTitle';
 
 export default function AddFilm() {
+  useDocumentTitle("Add Film");
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const formik = useFormik({
@@ -33,7 +36,9 @@ export default function AddFilm() {
         icon: 'success',
         title: 'Film add successfully',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
+        background: theme.cardBackground,
+        color: theme.color,
       });
       navigate('/');
     },
@@ -49,7 +54,6 @@ export default function AddFilm() {
     }),
   });
 
-  const { theme } = useContext(ThemeContext);
 
   return (
     <Container maxWidth="md" className='component-container' sx={{paddingBottom:'60px'}}>
@@ -187,7 +191,7 @@ export default function AddFilm() {
         <div style={{ height: '25px' }}>
           {formik.errors.rating && formik.touched.rating && (<Typography variant="caption" color="red">{formik.errors.rating}</Typography>)}
         </div>
-        <Button type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right' }}>
+        <Button className='btn' type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right' }}>
           Add
         </Button>
       </form>

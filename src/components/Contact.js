@@ -15,7 +15,7 @@ export default function Contact() {
             agree: false
         },
         onSubmit: async values => {
-            // const data = await contact({});
+            console.log(values)
         },
         validationSchema: Yup.object({
             name: Yup.string().required("Required").min(2, "Name must be 2 characters or more"),
@@ -132,9 +132,9 @@ export default function Contact() {
                     value={formik.values.agree}
                     onClick={formik.handleChange} />
 
-                <Button type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right' }}>Submit</Button>
+                <Button className='btn' type="submit" variant="contained" sx={{ background: theme.inputBackground, color: theme.color, float: 'right' }}>Submit</Button>
                 <div style={{ height: '25px' }}>
-                    {formik.errors.agree && (<Typography variant="caption" color="red">{formik.errors.agree}</Typography>)}
+                    {formik.errors.agree && formik.touched.agree && (<Typography variant="caption" color="red">{formik.errors.agree}</Typography>)}
                 </div>
             </form>
         </Container>

@@ -12,6 +12,9 @@ import "./components/fontawesome/fontawesome.js"
 import Footer from './components/Footer';
 import AddFilm from './components/AddFilm';
 import UpdateFilm from './components/UpdateFilm';
+import Protected from './components/Protected';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -20,12 +23,14 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/sign-up' element={<SignUp />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/news' element={<News />} />
         <Route path='/about-us' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/add-film' element={<AddFilm />} />
-        <Route path='/update-film/:id' element={<UpdateFilm />} />
+        <Route path='/add-film' element={<Protected><AddFilm /></Protected>} />
+        <Route path='/update-film/:id' element={<Protected><UpdateFilm /></Protected>} />
       </Routes>
       <Footer />
     </div>
