@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'
 
 export default function Slider({ films }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideLength = films.length;
+  const navigate = useNavigate();
 
   let autoScroll = true;
   let slideInterval;
@@ -37,7 +39,7 @@ export default function Slider({ films }) {
     <div className='slider'>
       {films.map((film, index) => (
         <div className={index === currentSlide ? 'slide current-slide' : 'slide'} key={index}>
-          {index === currentSlide && <img src={film.banner} alt={film.title} />}
+          {index === currentSlide && <img src={film.banner} alt={film.title} onClick={() => navigate(`detail/${film.id}`)} />}
         </div>
       ))}
       <div className='slide-left'>

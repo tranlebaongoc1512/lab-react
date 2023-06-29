@@ -26,7 +26,7 @@ export default function Main() {
     };
     return (
         <>
-            {listOfFilms.length !== 0 ? (
+            {listSlider.length !== 0 ? (
                 <>
                     <Slider films={listSlider} />
                     <div style={{ textAlign: 'center', paddingTop: '20px' }}>
