@@ -15,7 +15,7 @@ export default function FilmsPresentation({ films }) {
     const currentFilms = films.slice(startIndex, endIndex);
     const totalPages = Math.ceil(films.length / itemsPerPage);
     useEffect(() => {
-        setCurrentPage([1]);
+        setCurrentPage(1);
     }, [films])
     return (
         <Container maxWidth='xl' className='component-container'>
