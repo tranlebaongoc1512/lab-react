@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import useDocumentTitle from './hooks/useDocumentTitle';
 import { useSelector, useDispatch } from 'react-redux';
-import { draftFilm } from '../selectors/selector';
-import { saveFilm, clearFilm } from '../actions/actions';
+import { draftFilm } from '../store/selector';
+import { saveFilm, clearFilm } from '../store/filmSlice';
 
 export default function AddFilm() {
   useDocumentTitle("Add Film");

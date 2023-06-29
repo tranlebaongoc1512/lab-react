@@ -39,18 +39,17 @@ export default function Contact() {
             <form onSubmit={formik.handleSubmit}>
                 <TextField
                     sx={{ background: theme.inputBackground, borderRadius: '4px' }}
-                    label="What can we help you with?"
                     variant="outlined"
                     fullWidth
                     margin="none"
                     select
-                    InputLabelProps={{ style: { color: theme.color } }}
                     SelectProps={{ style: { color: theme.color } }}
                     name="problem"
                     value={formik.values.problem}
                     onChange={formik.handleChange}
                     error={formik.touched.problem && formik.errors.problem}
                 >
+                    <MenuItem value={0} disabled>What can we help you with?</MenuItem>
                     <MenuItem value={1}>Can't find Movie</MenuItem>
                     <MenuItem value={2}>Movie Error</MenuItem>
                     <MenuItem value={3}>Problem with account</MenuItem>
