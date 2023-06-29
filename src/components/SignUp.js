@@ -11,6 +11,7 @@ export default function SignUp() {
         initialValues: {
             email: "",
             password: "",
+            retypePassword: "",
         },
         onSubmit: async values => {
             // sign up
