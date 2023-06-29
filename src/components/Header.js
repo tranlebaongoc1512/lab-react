@@ -22,6 +22,7 @@ export default function Header() {
     const handleSignOut = async () => {
         try {
             await logOut()
+            handleCloseUserLogin()
         } catch (error) {
             console.log(error);
         }
@@ -30,6 +31,7 @@ export default function Header() {
     const { theme, toggle } = useContext(ThemeContext);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const [anchorElUserLogin, setAnchorElUserLogin] = useState(null);
     const location = useLocation();
     let title = 'React App';
     pages.forEach(page => {
@@ -49,6 +51,14 @@ export default function Header() {
     };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
+    };
+
+    const handleOpenUserLogin = (event) => {
+        setAnchorElUserLogin(event.currentTarget);
+    };
+
+    const handleCloseUserLogin = () => {
+        setAnchorElUserLogin(null);
     };
 
     const handleCloseNavMenu = () => {
@@ -107,17 +117,17 @@ export default function Header() {
                                 <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
                                 <IconButton
                                     size="small"
-                                    aria-controls="menu-userbar"
+                                    aria-controls="menu-userlogin"
                                     aria-haspopup="true"
-                                    onClick={handleOpenUserMenu}
+                                    onClick={handleOpenUserLogin}
                                     color="inherit"
                                 >
                                     <Avatar alt={user.email} src={user.photoURL} />
                                 </IconButton>
                             </div>
                             <Menu
-                                id="menu-userbar"
-                                anchorEl={anchorElUser}
+                                id="menu-userlogin"
+                                anchorEl={anchorElUserLogin}
                                 anchorOrigin={{
                                     vertical: 'bottom',
                                     horizontal: 'right',
@@ -127,8 +137,8 @@ export default function Header() {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
+                                open={Boolean(anchorElUserLogin)}
+                                onClose={handleCloseUserLogin}
                                 sx={{
                                     display: { xs: 'block', sm: 'none' },
                                 }}
@@ -137,7 +147,7 @@ export default function Header() {
                                 }}
                                 className='menu-list'
                             >
-                                <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
+                                <MenuItem onClick={handleCloseUserLogin} className='menu-item'>
                                     <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
                                 </MenuItem>
                                 <MenuItem className='menu-item'>
@@ -182,7 +192,7 @@ export default function Header() {
                                 className='menu-list'
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting.id} onClick={handleCloseNavMenu} className='menu-item'>
+                                    <MenuItem key={setting.id} onClick={handleCloseUserMenu} className='menu-item'>
                                         <Link className={location.pathname === setting.path ? "active" : ""} to={setting.path}>{setting.name}</Link>
                                     </MenuItem>
                                 ))}
@@ -200,16 +210,16 @@ export default function Header() {
                         <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
                         <IconButton
                             size="small"
-                            aria-controls="menu-userbar"
+                            aria-controls="menu-userlogin"
                             aria-haspopup="true"
-                            onClick={handleOpenUserMenu}
+                            onClick={handleOpenUserLogin}
                             color="inherit"
                         >
                             <Avatar alt={user.email} src={user.photoURL} />
                         </IconButton>
                         <Menu
-                            id="menu-userbar"
-                            anchorEl={anchorElUser}
+                            id="menu-userlogin"
+                            anchorEl={anchorElUserLogin}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
@@ -219,14 +229,14 @@ export default function Header() {
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            open={Boolean(anchorElUserLogin)}
+                            onClose={handleCloseUserLogin}
                             MenuListProps={{
                                 style: { background: theme.cardBackground, color: theme.color},
                             }}
                             className='menu-list'
                         >
-                            <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
+                            <MenuItem onClick={handleCloseUserLogin} className='menu-item'>
                                 <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
                             </MenuItem>
                             <MenuItem className='menu-item'>
