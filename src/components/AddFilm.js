@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import useDocumentTitle from './hooks/useDocumentTitle';
 import { useSelector, useDispatch } from 'react-redux';
 import { draftFilm } from '../store/selector';
-import { saveFilm, clearFilm } from '../store/filmSlice';
+import { saveFilm, clearFilm } from '../store/features/filmSlice';
 
 export default function AddFilm() {
   useDocumentTitle("Add Film");
